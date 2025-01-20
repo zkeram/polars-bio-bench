@@ -34,6 +34,11 @@ from operations import (
     overlap_pygenomics,
     overlap_pyranges0,
     overlap_pyranges1,
+    count_overlaps_bioframe,
+    count_overlaps_polars_bio,
+    count_overlaps_pyranges0,
+    count_overlaps_pyranges1,
+    count_overlaps_genomicranges
 )
 from utils import df2pr0, df2pr1, prepare_datatests
 
@@ -43,6 +48,7 @@ def run_benchmark(
     test_cases,
     functions_overlap,
     functions_nearest,
+    functions_count_overlaps,
     bech_data_root,
     output_dir,
     baseline,
@@ -114,6 +120,12 @@ def run_benchmark(
                         table = [
                             func
                             for func in functions_nearest
+                            if f"{operation}_{tool}".startswith(func.__name__)
+                        ]
+                    elif operation == "count_overlaps":
+                        table = [
+                            func
+                            for func in functions_count_overlaps
                             if f"{operation}_{tool}".startswith(func.__name__)
                         ]
                     else:
@@ -388,6 +400,15 @@ def run(bench_config: str):
         nearest_pybedtools,
         nearest_genomicranges,
     ]
+    functions_count_overlaps = [
+        count_overlaps_polars_bio,
+        count_overlaps_bioframe,
+        count_overlaps_pyranges0,
+        count_overlaps_pyranges1,
+        count_overlaps_genomicranges,
+    ]
+
+
     prepare_datatests(datasets, BECH_DATA_ROOT)
 
     run_benchmark(
@@ -395,6 +416,7 @@ def run(bench_config: str):
         test_cases,
         functions_overlap,
         functions_nearest,
+        functions_count_overlaps,
         BECH_DATA_ROOT,
         output_dir,
         baseline,

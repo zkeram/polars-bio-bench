@@ -1,0 +1,47 @@
+benchmarks:
+  - name: count_overlaps-single
+    operation: count_overlaps
+    dataset: databio
+    tools:
+      - polars_bio
+      - bioframe
+      - pyranges0
+      - pyranges1
+      #- pybedtools
+      - genomicranges
+    num_repeats: 3
+    parallel: false
+    input_dataframes: true
+    num_executions: 1
+    test-cases:
+      - "1-2"
+      - "2-7"
+      - "1-0"
+    dataframes_io:
+      - "polars.DataFrame:polars.DataFrame"
+      - "pandas.DataFrame:pandas.DataFrame"
+  - name: count_overlaps-parallel
+    operation: count_overlaps
+    dataset: databio
+    tools:
+      - polars_bio
+      - bioframe
+      - pyranges0
+      - pyranges1
+      #- pybedtools
+      - genomicranges 
+    parallel: true
+    threads:
+      - 1
+      - 2
+      - 4
+    input_dataframes: true
+    num_repeats: 3
+    num_executions: 1
+    test-cases:
+      - "1-2"
+      - "2-7"
+      - "1-0"
+    dataframes_io:
+      - "polars.DataFrame:polars.DataFrame"
+      - "pandas.DataFrame:pandas.DataFrame"

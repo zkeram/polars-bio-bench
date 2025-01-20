@@ -541,6 +541,7 @@ description = "Build and run queries against data"
 optional = false
 python-versions = ">=3.7"
 groups = ["dev"]
+markers = "python_version < \"3.13\""
 files = [
     {file = "datafusion-43.1.0-cp38-abi3-macosx_10_12_x86_64.whl", hash = "sha256:b40afe48762c7649d1ec3a0116e31d3ee5226812fc4896c0f309d3d490a855c8"},
     {file = "datafusion-43.1.0-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:a61d3efa91578108631ae5f8f070e15656d8eb125a34fe9a1df13db72ce1bcde"},
@@ -1800,15 +1801,11 @@ name = "polars-bio"
 version = "0.5.4"
 description = "Blazing fast genomic operations on large Python dataframes"
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.9,<3.13"
 groups = ["dev"]
-files = [
-    {file = "polars_bio-0.5.4-cp38-abi3-macosx_10_12_x86_64.whl", hash = "sha256:548c02866d2d444b495f2d5b0d4061199cd031107e41d6d1944038ebcbb93316"},
-    {file = "polars_bio-0.5.4-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:7d311484774c596cf1cc723f29197bb9c83ff8f2cbcf9355c4bfd958ae4053a0"},
-    {file = "polars_bio-0.5.4-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c8a3be4cdc0f13413c8be764f91c137d4fbf2db74c63266d544d7a6a5a44af43"},
-    {file = "polars_bio-0.5.4-cp38-abi3-win_amd64.whl", hash = "sha256:adff586e05ad9feebec688110bbd0c0131a4e7d134910ded7a6805fa215ae81e"},
-    {file = "polars_bio-0.5.4.tar.gz", hash = "sha256:def7fa518b779e586a87fcffc0d689b779149af12646f8e4161359e7c68f6300"},
-]
+markers = "python_version < \"3.13\""
+files = []
+develop = false
 
 [package.dependencies]
 bioframe = ">=0.7.2,<0.8.0"
@@ -1816,6 +1813,12 @@ datafusion = ">=43.1.0,<43.2.0"
 pandas = ">=2.2.3,<2.3.0"
 polars = ">=1.17.1,<1.18.0"
 pyarrow = ">=18.1.0,<18.2.0"
+
+[package.source]
+type = "git"
+url = "https://github.com/zkeram/polars-bio"
+reference = "1cfdb4d0bc4d16866fc40d679016fa116dc94daa"
+resolved_reference = "1cfdb4d0bc4d16866fc40d679016fa116dc94daa"
 
 [[package]]
 name = "pre-commit"
@@ -1855,6 +1858,7 @@ description = "Python library for Apache Arrow"
 optional = false
 python-versions = ">=3.9"
 groups = ["dev"]
+markers = "python_version < \"3.13\""
 files = [
     {file = "pyarrow-18.1.0-cp310-cp310-macosx_12_0_arm64.whl", hash = "sha256:e21488d5cfd3d8b500b3238a6c4b075efabc18f0f6d80b29239737ebd69caa6c"},
     {file = "pyarrow-18.1.0-cp310-cp310-macosx_12_0_x86_64.whl", hash = "sha256:b516dad76f258a702f7ca0250885fc93d1fa5ac13ad51258e39d402bd9e2e1e4"},
@@ -2615,14 +2619,14 @@ zstd = ["zstandard (>=0.18.0)"]
 
 [[package]]
 name = "virtualenv"
-version = "20.29.0"
+version = "20.29.1"
 description = "Virtual Python Environment builder"
 optional = false
 python-versions = ">=3.8"
 groups = ["dev"]
 files = [
-    {file = "virtualenv-20.29.0-py3-none-any.whl", hash = "sha256:c12311863497992dc4b8644f8ea82d3b35bb7ef8ee82e6630d76d0197c39baf9"},
-    {file = "virtualenv-20.29.0.tar.gz", hash = "sha256:6345e1ff19d4b1296954cee076baaf58ff2a12a84a338c62b02eda39f20aa982"},
+    {file = "virtualenv-20.29.1-py3-none-any.whl", hash = "sha256:4e4cb403c0b0da39e13b46b1b2476e505cb0046b25f242bee80f62bf990b2779"},
+    {file = "virtualenv-20.29.1.tar.gz", hash = "sha256:b8b8970138d32fb606192cb97f6cd4bb644fa486be9308fb9b63f81091b5dc35"},
 ]
 
 [package.dependencies]
@@ -2724,4 +2728,4 @@ test = ["pytest"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<3.14.0"
-content-hash = "52f3d91630f03c4e21909d56f55e5776cd6ee2d9cc5d448cdd8d3870470ef701"
+content-hash = "275769ed1721ed030845fb71badedb7c26552ccb390f58807f79cdadff71a738"
