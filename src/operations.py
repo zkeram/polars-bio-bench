@@ -100,6 +100,7 @@ def count_overlaps_bioframe(df_1, df_2):
 
 
 def count_overlaps_polars_bio(df_path_1, df_path_2, output_type):
+    go_naive = False
     if output_type == "polars.LazyFrame":
         len(
             pb.count_overlaps(
@@ -108,6 +109,7 @@ def count_overlaps_polars_bio(df_path_1, df_path_2, output_type):
                 cols1=columns,
                 cols2=columns,
                 output_type=output_type,
+                naive_query=go_naive,
             ).collect()
         )
     else:
@@ -118,6 +120,7 @@ def count_overlaps_polars_bio(df_path_1, df_path_2, output_type):
                 cols1=columns,
                 cols2=columns,
                 output_type=output_type,
+                naive_query=go_naive,
             )
         )
 
